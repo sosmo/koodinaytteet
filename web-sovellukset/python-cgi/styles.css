@@ -1,0 +1,94 @@
+body, html {
+	margin: 0em;
+	padding: 0em;
+	height: 100%;
+}
+
+body {
+	padding: 1em;
+	font-size: 80%;
+	font-family: sans-serif;
+	color: black;
+	background: #eee;
+}
+
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+table {
+	margin: 0em;
+	padding: 0em;
+	border-spacing: 0em;
+	border-collapse: collapse;
+}
+
+table tr, table td, table th {
+	margin: 0em;
+	padding: 0em;
+}
+
+table th {
+	width: auto;
+	text-align: inherit;
+	font-weight: normal;
+}
+
+a, a:link {
+	text-decoration: none;
+	color: blue;
+}
+
+a:hover {
+	color: red;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+
+fieldset.invisible {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.mine_table {
+	border: 1px solid black;
+}
+
+.mine_table td {
+	width: 50px;
+	height: 50px;
+	color: green;
+	background: white;
+}
+
+.mine_table td * {
+	display: block;
+	box-sizing: border-box;
+	width: 50px;
+	height: 50px;
+	margin: 0em;
+	padding: 0em;
+}
+
+.mine_table input {
+	color: transparent;
+	background: none;
+	border: 0;
+}
+
+.mine_table .empty {
+	border: 4px groove silver;
+	background-color: silver;
+}
+
+.mine_table .mine {
+	background-image: url("images/mine.svg");
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}

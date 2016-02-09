@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+	<meta charset="utf-8">
+
+	<title>Reseptitietokanta</title>
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Sampo Osmonen">
+
+	<link rel="stylesheet" media="all" href="styles.css">
+
+	<script src="jquery-1.11.3_min.js"></script>
+	<script src="jquery_form.js"></script>
+	<script src="script.js"></script>
+</head>
+<body>
+	<div id="nav">
+		<ul class="menu">
+			<li><a id="nav_kaikki" href="#">Kaikki reseptit</a></li>
+			<li><a id="nav_lisaa" href="#">Lisää resepti</a></li>
+			<li><a id="nav_lajit" href="#">Muokkaa ruokalajeja</a></li>
+		</ul>
+	</div>
+
+	<div id="yleinen_virhe" class="errortext"></div>
+
+	<div id="content">
+
+		<div id="listing_templ">
+
+			<h1>Kaikki reseptit</h1>
+			<div id="reseptit">
+				<ul id="reseptilista"></ul>
+			</div>
+
+		</div>
+
+
+		<div id="add_recipe_templ" class="hidden">
+
+			<h1 id="add_recipe_heading">Lisää uusi resepti</h1>
+			<form id="lisayslomake" action="#" method="post">
+				<p><label for="resepti_nimi">Ruoan nimi:</label> <input id="resepti_nimi" name="nimi" type="text"> <span id="resepti_nimi_err" class="errortext"></span></p>
+				<p>Kuvaus: <span id="resepti_kuvaus_err" class="errortext"></span><br>
+					<textarea id="resepti_kuvaus" name="kuvaus" rows="2" cols="30"></textarea>
+				</p>
+				<p><label for="resepti_maara">Henkilömäärä:</label> <input id="resepti_maara" name="maara" type="text"> <span id="resepti_maara_err" class="errortext"></span></p>
+				<p>
+					<label for="resepti_laji">Ruokalaji:</label>
+					<select id="resepti_laji" name="laji"></select>
+					<span id="resepti_laji_err" class="errortext"></span>
+				</p>
+				<p>Vaiheet: <span id="resepti_vaiheet_err" class="errortext"></span></p>
+				<ol id="resepti_vaiheet"></ol>
+				<p><input id="submit_recipe" name="submit_recipe" type="submit" value="Lisää" disabled> <span id="recipe_status_text"></span></p>
+			</form>
+
+		</div>
+
+
+		<div id="edit_kinds_templ" class="hidden">
+
+			<h1>Muokkaa ruokalajeja</h1>
+
+			<h2>Lisää uusi</h2>
+			<div id="uusi_laji" class="ruokalaji">
+				<form id="uusi_laji_lomake" action="#" method="post">
+					<p><label>Nimi: <input name="nimi" type="text"></label> <span class="errortext"></span></p>
+					<p><label>Kuvaus: <input name="kuvaus" type="text"></label> <span class="errortext"></span></p>
+					<p><input id="uusi_laji_nappi" name="insert" type="submit" value="Lisää" disabled> <span id="uusi_laji_status" data-type="laji_status"></span></p>
+				</form>
+			</div>
+
+			<h2>Ruokalajit</h2>
+			<div id="lajit"></div>
+
+		</div>
+
+	</div>
+
+	<div id="templates" class="hidden">
+
+		<div id="laji_template" class="ruokalaji">
+			<form action="#" method="post">
+				<p><label>Nimi: <input name="nimi" type="text" value=""></label> <span class="errortext"></span></p>
+				<p><label>Kuvaus: <input name="kuvaus" type="text" value=""></label> <span class="errortext"></span></p>
+				<p><input name="update" type="submit" value="Tallenna"> <span data-type="laji_status"></span></p>
+			</form>
+
+		</div>
+	</div>
+</body>
+</html>

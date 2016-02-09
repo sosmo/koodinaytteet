@@ -1,0 +1,1 @@
+Boggle-peli tietokonetta vastaan. Pelin tarkoitus on löytää ruudukosta sanoja, jotka alkavat jostain ruudusta, ja jatkuvat kirjain kirjaimelta johonkin ympäröivistä ruuduista. Samaa ruutua saa sanassa käyttää vain kerran. Tietokoneella on vakiona käytössään yleisten englannin kielisten sanojen lista, mutta listan voi vaihtaa esimerkiksi eri kielelle.

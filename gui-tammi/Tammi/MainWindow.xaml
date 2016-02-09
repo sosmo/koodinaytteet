@@ -1,0 +1,67 @@
+﻿<Window x:Class="Tammi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:src="clr-namespace:Tammi" Loaded="Window_Loaded"
+        xmlns:p="clr-namespace:Tammi.Properties"
+        Title="{x:Static p:Resources.Title}" MinHeight="360" MinWidth="280" Height="520" Width="450">
+    <Window.Resources>
+        <Style x:Key="_whiteSquare" TargetType="Rectangle">
+            <Setter Property="Fill" Value="BurlyWood"></Setter>
+        </Style>
+        <Style x:Key="_blackSquare" TargetType="Rectangle">
+            <Setter Property="Fill" Value="SaddleBrown"></Setter>
+        </Style>
+        <Style x:Key="_highlightedSquare" TargetType="Rectangle">
+            <Setter Property="Stroke" Value="Red"></Setter>
+            <Setter Property="StrokeThickness" Value="5"></Setter>
+        </Style>
+        <Style x:Key="_whitePawn" TargetType="src:Pawn">
+            <Setter Property="Fill" Value="BurlyWood"></Setter>
+            <Setter Property="Stroke" Value="AntiqueWhite"></Setter>
+            <Setter Property="Margin" Value="6"></Setter>
+        </Style>
+        <Style x:Key="_blackPawn" TargetType="src:Pawn">
+            <Setter Property="Fill" Value="SaddleBrown"></Setter>
+            <Setter Property="Stroke" Value="AntiqueWhite"></Setter>
+            <Setter Property="Margin" Value="6"></Setter>
+        </Style>
+        <Style x:Key="_selectedPawn" TargetType="src:Pawn">
+            <Setter Property="Stroke" Value="Red"></Setter>
+            <Setter Property="StrokeThickness" Value="3"></Setter>
+        </Style>
+        <Style x:Key="_normalPawn" TargetType="src:Pawn">
+        </Style>
+        <Style x:Key="_kingPawn" TargetType="src:Pawn">
+            <Setter Property="Margin" Value="2"></Setter>
+            <Setter Property="Stroke" Value="Yellow"></Setter>
+        </Style>
+    </Window.Resources>
+    
+    <DockPanel>
+        <Menu Name="_menu" Height="23" DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Save" Click="Save_Click"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="_Print" Click="Print_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Game">
+                <MenuItem Header="_New Game" Click="NewGame_Click" />
+                <Separator></Separator>
+                <MenuItem Header="_Settings" Click="Settings_Click" />
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_Help" Click="Help_Click" />
+                <Separator></Separator>
+                <MenuItem Header="_About" Click="About_Click" />
+            </MenuItem>
+        </Menu>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Label Name="_gameStatus" FontSize="18" DockPanel.Dock="Left" Content="{Binding Path=GameStatus}"></Label>
+            </DockPanel>
+            <Border BorderThickness="2" DockPanel.Dock="Top" BorderBrush="LightGray">
+                <src:Board x:Name="_board" WhiteFill="BurlyWood" BlackFill="SaddleBrown"></src:Board>
+            </Border>
+        </DockPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,59 @@
+html {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 0 auto;
+	padding: 1em;
+	max-width: 50em;
+	border: 0.1em solid grey;
+	border-top: none;
+	font-size: 100%;
+	font-family: sans-serif;
+	color: black;
+	background: #eeeeee;
+}
+
+
+.hidden {
+	display: none;
+}
+
+.transparent {
+	visibility: hidden;
+}
+
+.errortext {
+	color: red;
+}
+
+
+ul.menu {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0 0 1em 0;
+}
+
+ul.menu li {
+	display: block;
+	flex: 0 0 auto;
+	padding: 0 0.5em;
+}
+
+ul.menu li:first-child {
+	padding-left: 0;
+}
+
+
+div.ruokalaji {
+	margin: 1em 0;
+	border-bottom: 0.1em solid grey;
+}
+
+
+#resepti_vaiheet li * {
+	vertical-align: top;
+}

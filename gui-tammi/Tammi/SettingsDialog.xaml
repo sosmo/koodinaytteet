@@ -1,0 +1,75 @@
+﻿<Window x:Class="Tammi.SettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings" MinHeight="320" MinWidth="270" Height="320" Width="270">
+
+    <DockPanel Margin="10" LastChildFill="True">
+        <Button x:Name="_close" Content="Close" MinWidth="50" Margin="0,5,0,0" HorizontalAlignment="Right" DockPanel.Dock="Bottom" Click="_close_Click"></Button>
+        <Grid DockPanel.Dock="Top">
+            <Grid.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="Margin" Value="0, 10, 0, 0"></Setter>
+                    <Setter Property="Padding" Value="0"></Setter>
+                </Style>
+                <Style TargetType="DockPanel">
+                    <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                </Style>
+                <Style TargetType="Separator">
+                    <Setter Property="Height" Value="5"></Setter>
+                </Style>
+            </Grid.Resources>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <Label Content="Game type"></Label>
+                <Separator />
+                <ComboBox Name="_gameType" HorizontalAlignment="Left" MinWidth="100" ItemsSource="{Binding Path=GameTypes}">
+                    <ComboBox.Resources>
+                        <Style TargetType="ComboBoxItem">
+                            <EventSetter Event="Selected" Handler="GameTypeItem_Selected"></EventSetter>
+                        </Style>
+                    </ComboBox.Resources>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Label Content="Board size" DockPanel.Dock="Top" Padding="0" VerticalAlignment="Top"></Label>
+                <Separator />
+                <ComboBox Name="_boardSize" MinWidth="80" ItemsSource="{Binding Path=Sizes}" DockPanel.Dock="Top">
+                    <ComboBox.Resources>
+                        <Style TargetType="ComboBoxItem">
+                            <EventSetter Event="Selected" Handler="BoardSizeItem_Selected"></EventSetter>
+                        </Style>
+                    </ComboBox.Resources>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Grid.Row="2">
+                <Label Content="Pawn colors" DockPanel.Dock="Top"></Label>
+                <Separator DockPanel.Dock="Top" />
+                <DockPanel>
+                    <Button Content="White pawns" x:Name="_whitePawnColor" DockPanel.Dock="Left" Click="_whitePawnColor_Click"></Button>
+                    <Button Content="Black pawns" x:Name="_blackPawnColor" Margin="10, 0, 0, 0" DockPanel.Dock="Left" Click="_blackPawnColor_Click"></Button>
+                </DockPanel>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Grid.Row="3">
+                <Label Content="Pawn colors" DockPanel.Dock="Top"></Label>
+                <Separator DockPanel.Dock="Top"/>
+                <DockPanel>
+                    <Button Content="White squares" x:Name="_whiteSquareColor" DockPanel.Dock="Left" Click="_whiteSquareColor_Click"></Button>
+                    <Button Content="Black squares" x:Name="_blackSquareColor" Margin="10, 0, 0, 0" DockPanel.Dock="Left" Click="_blackSquareColor_Click"></Button>
+                </DockPanel>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>

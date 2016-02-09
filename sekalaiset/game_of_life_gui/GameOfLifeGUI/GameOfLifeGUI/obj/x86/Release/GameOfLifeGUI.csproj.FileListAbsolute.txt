@@ -1,0 +1,8 @@
+C:\Users\Sampo\Desktop\Projekteja\sekalaiset\game_of_life_gui\GameOfLifeGUI\GameOfLifeGUI\bin\x86\Release\GameOfLifeGUI.exe
+C:\Users\Sampo\Desktop\Projekteja\sekalaiset\game_of_life_gui\GameOfLifeGUI\GameOfLifeGUI\bin\x86\Release\GameOfLifeGUI.pdb
+C:\Users\Sampo\Desktop\Projekteja\sekalaiset\game_of_life_gui\GameOfLifeGUI\GameOfLifeGUI\bin\x86\Release\Jypeli.dll
+C:\Users\Sampo\Desktop\Projekteja\sekalaiset\game_of_life_gui\GameOfLifeGUI\GameOfLifeGUI\bin\x86\Release\Jypeli.xml
+C:\Users\Sampo\Desktop\Projekteja\sekalaiset\game_of_life_gui\GameOfLifeGUI\GameOfLifeGUI\obj\x86\Release\GameOfLifeGUI.csprojResolveAssemblyReference.cache
+C:\Users\Sampo\Desktop\Projekteja\sekalaiset\game_of_life_gui\GameOfLifeGUI\GameOfLifeGUI\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Sampo\Desktop\Projekteja\sekalaiset\game_of_life_gui\GameOfLifeGUI\GameOfLifeGUI\obj\x86\Release\GameOfLifeGUI.exe
+C:\Users\Sampo\Desktop\Projekteja\sekalaiset\game_of_life_gui\GameOfLifeGUI\GameOfLifeGUI\obj\x86\Release\GameOfLifeGUI.pdb

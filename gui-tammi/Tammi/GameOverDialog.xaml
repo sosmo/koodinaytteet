@@ -1,0 +1,23 @@
+﻿<Window x:Class="Tammi.GameOverDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:src="clr-namespace:Tammi"
+        xmlns:p="clr-namespace:Tammi.Properties"
+        Title="{x:Static p:Resources.Title}" Height="137" Width="246">
+    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" LastChildFill="False">
+        <Label Name="_message" Margin="0, 3" DockPanel.Dock="Top"></Label>
+
+        <DockPanel LastChildFill="False" Margin="0, 3" HorizontalAlignment="Center" DockPanel.Dock="Top">
+            <DockPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="5, 0"></Setter>
+                    <Setter Property="Padding" Value="1"></Setter>
+                    <Setter Property="MinWidth" Value="50"></Setter>
+                </Style>
+            </DockPanel.Resources>
+
+            <Button x:Name="_quit" Content="Quit" DockPanel.Dock="Left" Click="_quit_Click"></Button>
+            <Button x:Name="_newGame" Content="New Game" DockPanel.Dock="Left" Click="_newGame_Click"></Button>
+        </DockPanel>
+    </DockPanel>
+</Window>

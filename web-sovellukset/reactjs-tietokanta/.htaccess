@@ -1,0 +1,15 @@
+AddCharset UTF-8 .html, .xhtml
+
+#AddType application/xhtml+xml .html
+
+AddHandler mod_python .py
+
+PythonHandler mod_python.publisher
+
+PythonDebug on
+
+#Määrää, että käytetään omaa python-tulkkia tämän .htaccess-tiedoston alikansioissa.
+#ilman tätä riviä saattavat samalla palvelimella suoritetut mod_python-sovellukset sotkeentua keskenään
+PythonInterpPerDirective On
+
+DirectoryIndex index.html

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="jquery.js"></script>
+		<script src="react.js"></script>
+		<script src="JSXTransformer.js"></script>
+
+		<link rel="stylesheet" media="all" href="styles.css">
+	</head>
+	<body>
+		<div id="main"></div>
+<script type="text/jsx">
+	function errorHandler(request, status, errorText) { alert(request.responseText); };
+
+	// pidä lisäyslomake näytöllä
+	function rullaus(event) {
+			$form = $(".recipeform");
+			if ($form.css("clear") != "none") {
+				$form.css("position", "static");
+				return;
+			}
+			var rect = $form[0].getBoundingClientRect();
+			if (rect.top < $(window).scrollTop()) {
+				$form.offset({top: $(window).scrollTop(), left: $form.offset().left});
+			}
+			else {
+				$form.css("position", "static");
+			}
+		};
+	$(window).on("scroll", rullaus);
+	$(window).on("resize", rullaus);
+
+	var container = $("#main")[0];
+
+
+	/*
+	* Oma dynaaminen select-komponentti.
+	* Props
+	*  name: Nimi, joka luotavalle select-komponentille annetaan.
+	*  items: Lista olioista muotoa {text:"nimi", value:"value"}, jossa "text" tulee luotavan optionin tekstiksi ja "value" valueksi.
+	*  selectHandler: Funktio, joka suoritetaan aina kun valinta vaihtuu. Saa parametrina uuden valitun arvon.
+	*/
+	var Select = React.createClass({
+			render: function() {
+				var onChange = (function(event) {
+						if (!this.props.selectHandler) {
+							return;
+						}
+						this.props.selectHandler(event.target.value);
+					}).bind(this);
+
+				var i = 0;
+				var list = this.props.items.map(function(item) {
+						return <option key={i++} value={item["value"]}>{item["text"]}</option>;
+					});
+
+				return (
+					<select name={this.props.name} onChange={onChange} value={(this.props.value) ? this.props.value : ""}>
+						{list}
+					</select>);
+			}
+		});
+
+	/*
+	* Oma dynaaminen kasa radio-nappeja.
+	* Props
+	*  name: Nimi, joka luotaville komponenteille annetaan.
+	*  items: Lista olioista muotoa {text:"nimi", value:"value"}, jossa "text" tulee luotavan painikkeen tekstiksi ja "value" valueksi.
+	*  selectHandler: Funktio, joka suoritetaan aina kun valinta vaihtuu. Saa parametrina uuden valitun arvon.
+	*/
+	var Radio = React.createClass({
+			render: function() {
+				var onChange = (function(event) {
+						if (!this.props.selectHandler) {
+							return;
+						}
+						this.props.selectHandler(event.target.value);
+					}).bind(this);
+
+				var i = 0;
+				var _this = this;
+				var list = this.props.items.map(function(item) {
+					if ((!_this.props.value && i == 0) || (_this.props.value && item["value"] == _this.props.value)) {
+						return <label><input type="radio" key={i++} name={_this.props.laji} onChange={onChange} value={item["value"]} checked />{item["text"]}</label>;
+					}
+					return <label><input type="radio" key={i++} name={_this.props.laji} onChange={onChange} value={item["value"]} />{item["text"]}</label>;
+					});
+
+				return (
+					<div>
+						{list}
+					</div>);
+			}
+		});
+
+	/*
+	* Lomake, jossa dropdowneina 1 tai useampia aineita.
+	* Props
+	*  selections: Lista, jossa järjestyksessä lomakkeelle tulevien selectien valitut arvot.
+	*  items: Käytössä olevat aineet muodossa {text: "nimi", value: "id"}
+	*  selectHandler: Handleri, joka annetaan lomakkeen Select-komponenteille.
+	*/
+	var Ainelomake = React.createClass({
+			getInitialState: function() {
+				return {fieldCount: 1};
+			},
+
+			render: function() {
+				var addField = (function() {
+					this.setState({fieldCount: Math.max(this.props.selections.length, this.state.fieldCount)+1});
+				}).bind(this);
+
+				if (this.props.selections) {
+					var fieldCount = Math.max(this.props.selections.length, this.state.fieldCount);
+				}
+				else {
+					var fieldCount = this.state.fieldCount;
+				}
+
+				var fields = [];
+				for (var i = 0; i < fieldCount; i++) {
+					if (this.props.selections) {
+						fields[i] = <p><Select name="aine" items={this.props.items} selectHandler={this.props.selectHandler} value={this.props.selections[i]} key={i} /></p>;
+					}
+					else {
+						fields[i] = <p><Select name="aine" items={this.props.items} selectHandler={this.props.selectHandler} key={i} /></p>;
+					}
+				}
+				return (
+					<div>
+						{fields}
+						<div><input type="submit" value="Lisää raaka-aine" onClick={addField} /></div>
+					</div>);
+			}
+		});
+
+	/*
+	* Lomake reseptin muuttamiseen/lisäämiseen.
+	* Props
+	*  recipe: Jos mukana, asetetaan tämän mukaan kentät.
+	*  buttonHandler: Tämä suoritetaan kun lomakkeen nappia painetaan.
+	*/
+	var RecipeForm = React.createClass({
+			getInitialState: function() {
+				return {courses: [], ingredients: []};
+			},
+
+			componentDidMount: function() {
+				var setCourses = (function(data, status, request) {
+						var courses = data.map(function(item) {
+								return {text: item["nimi"], value: item["id"]};
+							});
+						this.setState({courses: courses});
+					}).bind(this);
+				$.ajax({
+						async: true,
+						url: "hae_lajit.py",
+						data: "",
+						processData: false,
+						dataType: "json",
+						type: "post",
+						success: setCourses,
+						error: errorHandler
+					});
+				var setIngredients = (function(data, status, request) {
+						var ingredients = data.map(function(item) {
+								return {text: item["nimi"], value: item["id"]};
+							});
+						this.setState({ingredients: ingredients});
+					}).bind(this);
+				$.ajax({
+						async: true,
+						url: "hae_aineet.py",
+						data: "",
+						processData: false,
+						dataType: "json",
+						type: "post",
+						success: setIngredients,
+						error: errorHandler
+					});
+			},
+
+			render: function() {
+				var recipe = this.props.recipe;
+				if (recipe) {
+					var nimi = recipe["nimi"];
+					var kuvaus = recipe["kuvaus"];
+					var maara = recipe["maara"];
+					var nappiteksti = "Tallenna";
+					var aineValinnat = recipe["aineet"].map(function(item) {
+							return item["aineid"];
+						});
+					var laji = recipe["lajiid"];
+				}
+				else {
+					var nimi = "";
+					var kuvaus = "";
+					var maara = "";
+					var nappiteksti = "Lisää resepti";
+					var aineValinnat = null;
+					var laji = "";
+				}
+
+				var onButton = (function(event) {
+						if (!this.props.buttonHandler) {
+							return;
+						}
+						if (this.props.recipe) {
+							var uusi = false;
+						}
+						else {
+							var uusi = true;
+						}
+						var tulos = {
+								nimi: nimi,
+								kuvaus: kuvaus,
+								maara: maara,
+							};
+						this.props.buttonHandler(uusi, tulos);
+					}).bind(this);
+
+				return (
+					<div className="recipeform">
+						<p><label>Ruoan nimi: <input type="text" name="nimi" value={nimi} /></label></p>
+						<p><label>Kuvaus: <input type="text" name="kuvaus" value={kuvaus} /></label></p>
+						<p><label>Henkilömäärä: <input type="text" name="maara" value={maara} /></label></p>
+						<p><label>
+							Ruokalaji:<br/>
+							<Radio name="laji" items={this.state.courses} value={laji} />
+						</label></p>
+						<p>
+							<h3>Raaka-aineet</h3>
+							<Ainelomake name="aineet" items={this.state.ingredients} selections={aineValinnat} />
+						</p>
+						<p>
+							<input type="submit" value={nappiteksti} onClick={onButton} />
+						</p>
+					</div>);
+			}
+		});
+
+	/* Monitasoinen lista resepteistä
+	* Props
+	*  items: Listassa näkyvät reseptit samassa muodossa kuin missä ne tietokannasta tulee.
+	*  recipeClickHandler: Funktio, jota kutsutaan kun reseptiä klikataan. Saa parametriksi klikatun reseptin datan.
+	*  comparator: Funktio, joka sopii sortin argumentiksi. Käytetään reseptien lajittelussa.
+	*/
+	var RecipeList = React.createClass({
+			render: function() {
+				var recipeClick = (function(event) {
+						event.preventDefault();
+						if (!this.props.recipeClickHandler) {
+							return;
+						}
+						var id = $(event.target).data("id");
+						for (var i = 0; i < this.props.items.length; i++) {
+							var item = this.props.items[i];
+							if (item["id"] == id) {
+								break;
+							}
+						}
+						this.props.recipeClickHandler(item);
+					}).bind(this);
+
+				var sortedList = this.props.items.sort(this.props.comparator);
+				var list = sortedList.map(function(item) {
+						var foodList = item["aineet"].map(function(item) {
+								return <li>{item["nimi"]}: {item["maara"]} {item["yksikko"]}</li>;
+							});
+						var stepList = item["vaiheet"].map(function(item) {
+								return <li>{item["teksti"]}</li>;
+							});
+						// key siksi että react osaa varmasti tunnistaa mitä pitää päivittää ja mitä lisätä
+						return (
+							<li key={item["id"]}>
+								<h2><a href="#" data-id={item["id"]} onClick={recipeClick}>{item["nimi"]}</a></h2>
+								<p>{item["laji"]}</p>
+								<h3>Raaka-aineet:</h3>
+								<ul>
+									{foodList}
+								</ul>
+								<h3>Vaiheet:</h3>
+								<ol>
+									{stepList}
+								</ol>
+							</li>
+						);
+					});
+				return (
+					<ul className="recipelist">
+						{list}
+					</ul>);
+			}
+		});
+
+	/* Lista resepteistä, lajittelupainikkeella.
+	* Props
+	*  items: Listassa näkyvät reseptit samassa muodossa kuin missä ne tietokannasta tulee.
+	*  recipeClickHandler: Funktio, jota kutsutaan kun reseptiä klikataan. Saa parametriksi klikatun reseptin datan.
+	*/
+	var RecipesView = React.createClass({
+			// vertaile kahden reseptin nimien aakkosjärjestystä
+			_nameCmpAsc: function(recipe1, recipe2) {
+				var nimi1 = recipe1["nimi"];
+				var nimi2 = recipe2["nimi"];
+				if (nimi1 > nimi2)
+					return 1;
+				else if (nimi1 < nimi2)
+					return -1;
+				return 0;
+			},
+			_nameCmpDesc: function(recipe1, recipe2) {
+				return (-1) * this._nameCmpAsc(recipe1, recipe2);
+			},
+
+			getInitialState: function() {
+				return {comparator: this._nameCmpAsc};
+			},
+
+			render: function() {
+				var _this = this;
+				var sortModes = {
+						"1": this._nameCmpAsc,
+						"2": this._nameCmpDesc
+					};
+				var sortChangeHandler = (function(value) {
+						_this.setState({comparator: sortModes[value]});
+					});
+
+				var options = [
+						{value: "1", text: "Nouseva"},
+						{value: "2", text: "Laskeva"}
+					];
+
+				return (
+					<div className="recipesview">
+						<span>Järjestys: </span>&nbsp;
+						<Select name="lajittelu" items={options} selectHandler={sortChangeHandler} />
+						<RecipeList items={this.props.items} comparator={this.state.comparator} recipeClickHandler={this.props.recipeClickHandler} />
+					</div>);
+			}
+		});
+
+	/* Sivu, jossa reseptejä voi katsella ja muokata */
+	var RecipesPage = React.createClass({
+			getInitialState: function() {
+				return {recipes: [], selectedRecipe: null};
+			},
+
+			componentDidMount: function() {
+				var setRecipes = (function(data, status, request) {
+						this.setState({recipes: data});
+					}).bind(this);
+				$.ajax({
+						async: true,
+						url: "listaus.py",
+						data: "",
+						processData: false,
+						dataType: "json",
+						type: "post",
+						success: setRecipes,
+						error: errorHandler
+					});
+			},
+
+			_buttonHandler: (function(uusi, muuttuneenData) {
+				alert(muuttuneenData["nimi"]);
+				return;
+				if (uusi) {
+					this.setState({recipes: this.state.recipes.append(muuttuneenData)});
+				}
+				else {
+					alert(muuttuneenId);
+				}
+			}).bind(this),
+
+			render: function() {
+				var recipeClickHandler = (function(recipe) {
+						this.setState({selectedRecipe: recipe});
+					}).bind(this);
+
+				var recipes = (this.state.recipes.length != 0)
+					? <RecipesView items={this.state.recipes} recipeClickHandler={recipeClickHandler} />
+					: "";
+				return (
+					<div className="main">
+						<div className="page recipespage">
+							{recipes}
+							<RecipeForm recipe={this.state.selectedRecipe} buttonHandler={this._buttonHandler} />
+						</div>
+					</div>);
+			}
+		});
+
+
+	React.render(<RecipesPage />, container);
+
+</script>
+</body>
+</html>

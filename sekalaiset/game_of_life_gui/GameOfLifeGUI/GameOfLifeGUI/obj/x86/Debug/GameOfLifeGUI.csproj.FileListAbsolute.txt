@@ -1,0 +1,8 @@
+c:\users\sampo\documents\visual studio 2010\Projects\d6gameoflifegui\GameOfLifeGUI\GameOfLifeGUI\obj\x86\Debug\GameOfLifeGUI.csprojResolveAssemblyReference.cache
+c:\users\sampo\documents\visual studio 2010\Projects\d6gameoflifegui\GameOfLifeGUI\GameOfLifeGUI\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Sampo\Documents\Visual Studio 2010\Projects\d6gameoflifegui\GameOfLifeGUI\GameOfLifeGUI\bin\x86\Debug\GameOfLifeGUI.exe
+C:\Users\Sampo\Documents\Visual Studio 2010\Projects\d6gameoflifegui\GameOfLifeGUI\GameOfLifeGUI\bin\x86\Debug\GameOfLifeGUI.pdb
+C:\Users\Sampo\Documents\Visual Studio 2010\Projects\d6gameoflifegui\GameOfLifeGUI\GameOfLifeGUI\bin\x86\Debug\Jypeli.dll
+C:\Users\Sampo\Documents\Visual Studio 2010\Projects\d6gameoflifegui\GameOfLifeGUI\GameOfLifeGUI\bin\x86\Debug\Jypeli.xml
+C:\Users\Sampo\Documents\Visual Studio 2010\Projects\d6gameoflifegui\GameOfLifeGUI\GameOfLifeGUI\obj\x86\Debug\GameOfLifeGUI.exe
+C:\Users\Sampo\Documents\Visual Studio 2010\Projects\d6gameoflifegui\GameOfLifeGUI\GameOfLifeGUI\obj\x86\Debug\GameOfLifeGUI.pdb

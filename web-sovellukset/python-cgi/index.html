@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi" lang="fi">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-style-type" content="text/css" />
+	<title>Ruudukko</title>
+	<link rel="StyleSheet" href="styles.css" type="text/css"  />
+</head>
+<body>
+	<form id="mainform" action="/~saelosmo/cgi-bin/t3/mines.cgi" method="post">
+		<div id="content_wrapper">
+			<h1 id="heading">Ruudukko</h1>
+
+			<p>Kerro luotavan miinaruudukon koko. Ruudukko on yhtä monta ruutua
+			leveä kuin korkea. </p>
+
+				<fieldset>
+					<p><label>Leveys <input id="x" type="text" name="x" value="6" /></label></p>
+					<p><label>Teksti <input id="teksti" type="text" name="teksti" value="" /></label></p>
+				</fieldset>
+				<p><input id="main_submit" type="submit" name="main_submit" value="Luo" /></p>
+		</div>
+		<div id="table_wrapper">
+		</div>
+		<fieldset id="hidden_inputs" class="invisible">
+		</fieldset>
+	</form>
+</body>
+</html>

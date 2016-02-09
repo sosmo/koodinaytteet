@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi" lang="fi">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-style-type" content="text/css" />
+
+	<title>Nettisivu</title>
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="Sampo Osmonen" />
+
+	<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="styles.css" />
+
+	<!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />-->
+</head>
+<body>
+	<div id="nav_bg">
+		<div id="nav">
+			<div id="nav_logo"><a href="#"><img src="images/logo.png" alt="Wunderground" /></a></div>
+			<ul id="nav_menu" class="basic_menu">
+				<!--Lisää tähän kohtia, jos haluat lisää valikkokohteita.-->
+				<li><a href="#">Maps &amp; Radar</a></li>
+				<li><a href="#">Severe Weather</a></li>
+				<li><a href="#">News &amp; Blogs</a></li>
+				<li><a href="#">Photos &amp; Video</a></li>
+				<li><a href="#">Activities</a></li>
+				<li><a class="dropdown" href="">More</a></li>
+			</ul>
+			<div id="nav_search_wrapper">
+				<form id="nav_form" action="#">
+					<fieldset>
+						<input id="nav_search" type="text" value="Search Locations"></input>
+					</fieldset>
+				</form>
+			</div>
+			<div id="nav_buttons">
+				<a href="#" title="Account"><img src="images/person.png" alt="Account" /></a>
+				<a href="#" title="Settings"><img src="images/gear.png" alt="Account" /></a>
+			</div>
+		</div>
+	</div>
+	<div id="content_wrapper">
+		<div id="cities_nav">
+			<div id="cities_star"><a href="#" title="Favorites"><img src="images/star.png" alt="Favorites"/></a></div>
+			<div id="cities">
+				<h3>Recent cities</h3>
+				<ul id="cities_list">
+					<li><a href="#">Jyvaskyla, Finland</a></li>
+					<li><a href="#">Abisko, Sweden</a></li>
+					<li><a href="#">Paganella, Italy</a></li>
+					<li><a href="#">Saltpond, Ghana</a></li>
+					<li><a href="#">Samedan, Switzerland</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="heading_area">
+			<div id="heading">
+				<!--Valittu kaupunki-->
+				<h1>Jyvaskyla, Finland</h1>
+				<a href="#" title="Favorite"><img src="images/star2.png" alt="Favorite" /></a>
+				<a href="#" title="Home"><img src="images/house.png" alt="Home" /></a>
+			</div>
+			<div id="selections">
+				<img src="images/plane.png" alt="Plane" />
+				<!--Valittu kaupunki-->
+				<a href="#">Jyvaskyla</a>
+				<span class="separator">|</span>
+				<a class="dropdown" href="#">Change station</a>
+			</div>
+			<!--PVM-tiedot-->
+			<div id="date"><span class="bold">12:02 PM EEST on April 02, 2015</span> (GMT +03:00)</div>
+		</div>
+		<!--HUOM: span.blue_colored tekee tekstistä sinistä, span.red_colored punaista-->
+		<div id="main_content">
+			<div id="basic_info">
+				<div id="misc_info">Elev <span class="bold">145</span> m <span class="bold">62.40</span> &#176; N, <span class="bold">25.68</span> &#176; E <span class="separator">|</span> Updated 14 min ago </div>
+				<!--Taulukko, jossa perustietoja säästä. Muuta tästä kuvia ja tekstiä tarvittaessa.-->
+				<table id="basic_table">
+					<tr class="img_row">
+						<!--Säätila-->
+						<th><img src="images/snowcloud.png" alt="snow" /></th>
+						<!--Lämpötila-->
+						<th><span class="blue_colored"><span class="huge">1 </span><span class="big_unit">&#176;C</span></span></th>
+						<!--Tuuli-->
+						<th><img src="images/wind.png" alt="wind" /></th>
+					</tr>
+					<tr>
+						<td>Light Showers Snow</td>
+						<td>Feels like <span class="blue_colored"><span class="bold">-3 </span>&#176; C</span></td>
+						<td>Wind from NE</td>
+					</tr>
+				</table>
+				<!--Lyhyt säähän liittyvä kuvaus-->
+				<div id="textual_info">Today is forecast to be <span class="blue_colored"><span class="italic"><span class="bold">COOLER</span></span></span> than yesterday.</div>
+				<!--Tiivistetyt tiedot kahdesta päivästä, ks otsikot-->
+				<table id="days_table">
+					<tr>
+						<th>Today</th>
+						<th><a href="#">Yesterday</a></th>
+					</tr>
+					<tr>
+						<td>High <span class="red_colored"><span class="bold">3</span></span> <span class="separator">|</span> Low <span class="blue_colored"><span class="bold">-1</span></span> &#176; C</td>
+						<td>High <span class="red_colored"><span class="bold">5</span></span> <span class="separator">|</span> Low <span class="blue_colored"><span class="bold">-1</span></span> &#176; C</td>
+					</tr>
+					<tr>
+						<td><img src="images/snow.png" alt="snow" /> <span class="bold">60%</span> Chance of Precip.</td>
+						<td>Precip. <span class="bold">0</span> mm</td>
+					</tr>
+				</table>
+				<!--Tietoja auringon ja kuun tilasta-->
+				<div id="sunmoon_wrapper">
+					<h3><a href="#">Sun &amp; Moon</a></h3>
+					<div class="sun_label"><img src="images/sun_up.png" alt="sunrise" /> <span class="morning_sun_text">4:03</span> am</div>
+					<div class="sun_label"><img src="images/sun_down.png" alt="sundown" /> <span class="evening_sun_text">10.41</span> pm</div>
+					<div class="moon_label"><img src="images/moon.png" alt="moon state" /> <span class="bold">Waxing Gibbous, 96</span>% visible</div>
+				</div>
+			</div>
+			<!--Tarkempaa tietoa säästä-->
+			<div id="extra_info">
+				<!--Ks otsikot-->
+				<table id="extra_table">
+					<tr>
+						<th><dfn>Pressure</dfn></th>
+						<td><span class="bold">995</span> hPa</td>
+					</tr>
+					<tr>
+						<th><dfn>Visibility</dfn></th>
+						<td><span class="bold">10.0</span> kilometers</td>
+					</tr>
+					<tr>
+						<th>Clouds</th>
+						<td><span class="bold">Mostly Cloudy 396</span> m</td>
+					</tr>
+					<tr>
+						<th><dfn>Windchill</dfn></th>
+						<td><span class="bold">-3</span> &#176; C</td>
+					</tr>
+					<tr>
+						<th><dfn>Dew Point</dfn></th>
+						<td><span class="bold">-1</span> &#176; C</td>
+					</tr>
+					<tr>
+						<th><dfn>Humidity</dfn></th>
+						<td><span class="bold">87</span>%</td>
+					</tr>
+					<tr>
+						<th>Rainfall</th>
+						<td><span class="bold">0.0</span> mm</td>
+					</tr>
+					<tr>
+						<th><dfn>Snow Depth</dfn></th>
+						<td><span class="italic">Not avalaible.</span></td>
+					</tr>
+					<tr>
+						<th>UV</th>
+						<td><span class="italic">Not avalaible.</span></td>
+					</tr>
+					<tr>
+						<th>Pollen</th>
+						<td><span class="italic">Not avalaible.</span></td>
+					</tr>
+					<tr>
+						<th>Air Quality</th>
+						<td><span class="italic">Not avalaible.</span></td>
+					</tr>
+					<tr>
+						<th>Flu Activity</th>
+						<td><span class="italic">Not avalaible.</span></td>
+					</tr>
+				</table>
+				<div id="cryptic_code">METAR EFJY 020850Z 05008KT 9999 - SHSN BKN013 01/M01 Q0995</div>
+			</div>
+			<!--Kartta-->
+			<div id="map_wrapper">
+				<div class="basic_menu">
+					<ul class="basic_menu">
+						<li><a href="#">Radar</a></li>
+						<li><span class="selected_menu">Satellite</span></li>
+						<li><a href="#">Webcams</a></li>
+					</ul>
+					<div class="menu_right">
+						<a href="#">WunderMap</a>
+					</div>
+				</div>
+				<div id="map">
+					<img src="images/map.png" alt="Map" />
+				</div>
+			</div>
+		</div>
+		<!--Useamman päivän ennuste-->
+		<div id="forecast_wrapper">
+			<h2>10-Day Weather Forecast</h2>
+			<div class="basic_menu">
+				<ul class="basic_menu">
+					<li><span class="selected_menu">Graph</span></li>
+					<li><a href="#">Table</a></li>
+					<li><a href="#">Descriptive</a></li>
+				</ul>
+				<div id="forecast_menu_right" class="menu_right">
+					<a href="#"><span class="selected_link">Daily</span></a>
+					<span class="separator">|</span>
+					<a href="#">Hourly</a>
+					<div id="customize_button"><a href="#">Customize</a></div>
+				</div>
+			</div>
+			<div id="forecast">
+				<div class="scroll_arrow"><img src="images/grey_arr_l.png" alt="back" /></div>
+				<!--Muokkaa tätä taulukkoa, jos haluat vaihtaa ennusteita-->
+				<table>
+					<tr>
+						<!--Päivämäärät-->
+						<th>Thu 04/02</th>
+						<th>Fri 04/03</th>
+						<th>Sat 04/04</th>
+						<th>Sun 04/05</th>
+						<th>Mon 04/06</th>
+						<th>Tue 04/07</th>
+						<th>Wed 04/08</th>
+						<th>Thu 04/09</th>
+					</tr>
+					<tr>
+						<!--Lämpötilat-->
+						<td><span class="red_colored">3&#176;</span> <span class="separator">|</span> <span class="blue_colored">-1&#176;</span></td>
+						<td><span class="red_colored">4&#176;</span> <span class="separator">|</span> <span class="blue_colored">-1&#176;</span></td>
+						<td><span class="red_colored">3&#176;</span> <span class="separator">|</span> <span class="blue_colored">-1&#176;</span></td>
+						<td><span class="red_colored">5&#176;</span> <span class="separator">|</span> <span class="blue_colored">-2&#176;</span></td>
+						<td><span class="red_colored">6&#176;</span> <span class="separator">|</span> <span class="blue_colored">-1&#176;</span></td>
+						<td><span class="red_colored">5&#176;</span> <span class="separator">|</span> <span class="blue_colored">0&#176;</span></td>
+						<td><span class="red_colored">4&#176;</span> <span class="separator">|</span> <span class="blue_colored">-1&#176;</span></td>
+						<td><span class="red_colored">6&#176;</span> <span class="separator">|</span> <span class="blue_colored">-1&#176;</span></td>
+					</tr>
+					<tr>
+						<!--Kuvat-->
+						<td><img src="images/snow_showers.png" alt="snow showers" /></td>
+						<td><img src="images/snow_showers.png" alt="snow showers" /></td>
+						<td><img src="images/snow_showers.png" alt="snow showers" /></td>
+						<td><img src="images/mostly_cloudy.png" alt="mostly cloudy" /></td>
+						<td><img src="images/partly_cloudy.png" alt="partly cloudy" /></td>
+						<td><img src="images/snow_showers.png" alt="snow showers" /></td>
+						<td><img src="images/overcast.png" alt="overcast" /></td>
+						<td><img src="images/partly_cloudy.png" alt="partly cloudy" /></td>
+					</tr>
+					<tr>
+						<!--Kuvaukset-->
+						<td>Snow Showers</td>
+						<td>Snow Showers</td>
+						<td>Snow Showers</td>
+						<td>Mostly Cloudy</td>
+						<td>Partly Cloudy</td>
+						<td>Snow Showers</td>
+						<td>Overcast</td>
+						<td>Partly Cloudy</td>
+					</tr>
+				</table>
+				<div class="scroll_arrow"><img src="images/grey_arr_r.png" alt="forward" /></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

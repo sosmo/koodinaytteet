@@ -1,0 +1,1 @@
+GUI-pohjainen peli, jolla voi pelata tammi- ja breakout-pelejä. Pelissä on useita konfiguroitavia ominaisuuksia, ja pelin tilanne on mahdollista tallentaa tai tulostaa. Arkkitehtuuri on suunniteltu laajennettavaksi uusilla pelityypeillä.

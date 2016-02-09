@@ -1,0 +1,86 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+#main {
+	margin: 0 auto;
+	max-width: 60em;
+	border: 0.1em solid grey;
+	border-top: none;
+	font-size: 100%;
+	font-family: sans-serif;
+	color: black;
+	background: #eeeeee;
+}
+
+
+.hidden {
+	display: none;
+}
+
+.transparent {
+	visibility: hidden;
+}
+
+.errortext {
+	color: red;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+
+ul.menu {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 1em;
+}
+
+ul.menu li {
+	display: block;
+	flex: 0 0 auto;
+	padding: 0 0.5em;
+}
+
+ul.menu li:first-child {
+	padding-left: 0;
+}
+
+
+.page {
+	overflow: hidden;
+}
+
+.page > * {
+	box-sizing: border-box;
+}
+
+.recipesview {
+	float: left;
+	padding: 1em;
+	width: 60%;
+}
+
+.recipelist h3 {
+	margin-bottom: 0.1em;
+}
+
+.recipeform {
+	float: left;
+	padding: 1em;
+	width: 40%;
+}
+
+@media (max-width: 512px) {
+	.recipesview {
+		width: 100%;
+	}
+	.recipeform {
+		clear: left;
+		width: 100%;
+	}
+}

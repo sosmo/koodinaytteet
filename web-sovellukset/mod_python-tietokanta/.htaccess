@@ -1,0 +1,15 @@
+AddCharset UTF-8 .html, .xhtml
+
+#AddType application/xhtml+xml .html
+
+AddHandler mod_python .py
+
+PythonHandler sessions
+PythonHandler auth
+PythonHandler mod_python.publisher
+
+PythonDebug on
+
+PythonInterpPerDirective On
+
+DirectoryIndex index.py

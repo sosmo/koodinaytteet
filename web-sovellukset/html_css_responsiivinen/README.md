@@ -1,0 +1,1 @@
+Responsiivisena CSS3-tekniikoita käyttäen toteutettu näytönkaappausta jäljittelevä nettisivu.

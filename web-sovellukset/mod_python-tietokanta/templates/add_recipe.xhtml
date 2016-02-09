@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi" lang="fi">
+<head>
+	<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+	<meta http-equiv="content-style-type" content="text/css" />
+
+	<title>Reseptitietokanta</title>
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="Sampo Osmonen" />
+
+	<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="styles/styles.css" />
+	<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="styles/add_recipe.css" />
+</head>
+<body>
+	<div id="nav">
+		<ul class="menu">
+			<li><a href="index.py">Kaikki reseptit</a></li>
+			<li><a href="add_recipe.py">Lisää resepti</a></li>
+			<li><a href="edit_kinds.py">Muokkaa ruokalajeja</a></li>
+			<li><a href="logout.py">Kirjaudu ulos</a></li>
+		</ul>
+	</div>
+
+	<div id="content">
+		<h1>Lisää uusi resepti</h1>
+		<div id="error_text" class="errortext"></div>
+		<form id="lomake" action="" method="post">
+			<p><label for="nimi">Ruoan nimi:</label> <input id="nimi" name="nimi" type="text" /> <span id="nimi_err" class="errortext"></span></p>
+			<p>Kuvaus: <span id="kuvaus_err" class="errortext"></span><br />
+				<textarea id="kuvaus" name="kuvaus" rows="2" cols="30"></textarea>
+			</p>
+			<p><label for="maara">Henkilömäärä:</label> <input id="maara" name="maara" type="text" /> <span id="maara_err" class="errortext"></span></p>
+			<p>
+				<label for="laji">Ruokalaji:</label>
+				<select id="laji" name="laji"></select>
+				<span id="laji_err" class="errortext"></span>
+			</p>
+			<p>Vaiheet: <span id="vaiheet_err" class="errortext"></span></p>
+			<ol id="vaiheet"></ol>
+			<p><input id="submit" name="submit" type="submit" value="Lisää" /> <span id="status_text"></span></p>
+		</form>
+	</div>
+</body>
+</html>
